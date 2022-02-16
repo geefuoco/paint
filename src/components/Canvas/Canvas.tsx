@@ -7,7 +7,7 @@ interface Props {
   width: number;
 }
 
-interface Size {
+export interface Size {
   length: number;
   width: number;
 }
@@ -57,8 +57,9 @@ const Canvas: React.FC<Props> = ({ length, width }) => {
       data-testid="canvas-element"
       onMouseDown={() => setIsDrawing(true)}
       onMouseUp={() => setIsDrawing(false)}
+      onMouseLeave={() => setIsDrawing(false)}
     >
-      {toggleGrid}
+      <div className="button-pane">{toggleGrid}</div>
       {createCanvas(canvasSize)}
     </section>
   );
