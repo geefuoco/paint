@@ -11,3 +11,17 @@
 :root{
   font-family: "Roboto", sans-serif;
 }
+
+.btn{
+  font-size: 1rem;
+  font-weight: 700;
+  padding: .4rem;
+  box-shadow: 0 0 6px black;
+  &:hover{
+    background-color: #dbdbdd;
+  }
+}
+
+button{
+  cursor: pointer;
+}
