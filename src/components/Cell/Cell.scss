@@ -1,0 +1,12 @@
+.cell{
+    padding: 1rem;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    cursor:crosshair;
+}
+
+.cell:hover{
+    
+    border: solid 2px #bbb;
+}
