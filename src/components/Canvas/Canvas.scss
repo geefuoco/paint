@@ -15,3 +15,13 @@
     gap: 1rem;
     background-color:#eee;
 }
+
+.buttons{
+    flex-grow: 1;
+}
+
+.question-mark{
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+}

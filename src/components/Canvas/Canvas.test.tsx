@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import Canvas from "./Canvas";
 
 describe("Canvas", () => {
-  const setup = () => render(<Canvas length={16} width={16} />);
+  const setup = () => render(<Canvas />);
 
   it("should render a section element", () => {
     setup();

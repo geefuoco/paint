@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <main className="home">
       <h1 className="title">Paint</h1>
-      <Canvas length={16} width={16} />
+      <Canvas />
     </main>
   );
 };

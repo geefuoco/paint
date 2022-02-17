@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 import Cell from "../Cell/Cell";
-import "./Canvas.scss";
+import Slider from "../Slider/Slider";
+import ReactTooltip from "react-tooltip";
 
-interface Props {
-  length: number;
-  width: number;
-}
+import "./Canvas.scss";
 
 export interface Size {
   length: number;
   width: number;
 }
 
-const Canvas: React.FC<Props> = ({ length, width }) => {
-  const [canvasSize, setCanvasSize] = useState<Size>({ length, width });
+const Canvas: React.FC = () => {
+  const [canvasSize, setCanvasSize] = useState<Size>({ length: 16, width: 16 });
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const [grid, setGrid] = useState<boolean>(false);
   const [color, setColor] = useState<string>("#000");
+
+  // useEffect(() => {
+
+  // }, [canvasSize]);
 
   const createRow = (size: number, key: number): JSX.Element => {
     const row: Array<JSX.Element> = [];
@@ -51,17 +54,38 @@ const Canvas: React.FC<Props> = ({ length, width }) => {
     </button>
   );
 
+  const toolTip = `
+  Left click to color<br>
+  Right click to erase`;
+
+  const questionMark = (
+    <span className="question-mark" data-tip={toolTip}>
+      <BsFillQuestionCircleFill
+        style={{
+          color: "black",
+        }}
+      />
+    </span>
+  );
+
   return (
-    <section
-      className="canvas-element"
-      data-testid="canvas-element"
-      onMouseDown={() => setIsDrawing(true)}
-      onMouseUp={() => setIsDrawing(false)}
-      onMouseLeave={() => setIsDrawing(false)}
-    >
-      <div className="button-pane">{toggleGrid}</div>
-      {createCanvas(canvasSize)}
-    </section>
+    <>
+      <Slider setSize={setCanvasSize} />
+      <section
+        className="canvas-element"
+        data-testid="canvas-element"
+        onMouseDown={() => setIsDrawing(true)}
+        onMouseUp={() => setIsDrawing(false)}
+        onMouseLeave={() => setIsDrawing(false)}
+      >
+        <div className="button-pane">
+          <div className="buttons">{toggleGrid}</div>
+          {questionMark}
+        </div>
+        {createCanvas(canvasSize)}
+        <ReactTooltip place="right" multiline={true} />
+      </section>
+    </>
   );
 };
 

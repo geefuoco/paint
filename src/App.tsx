@@ -12,8 +12,8 @@ const App: React.FC = () => {
   return (
     <div className="App" style={darkMode ? undefined : lightMode}>
       <ToggleSwitch
-        top={20}
-        left={30}
+        top={25}
+        left={200}
         handleClick={() => setDarkMode(!darkMode)}
       />
       <Home />
