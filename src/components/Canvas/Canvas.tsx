@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import Cell from "../Cell/Cell";
 import Slider from "../Slider/Slider";
 import ReactTooltip from "react-tooltip";
+import { exportComponentAsPNG } from "react-component-export-image";
 
 import "./Canvas.scss";
 import ColorPicker from "../ColorPicker/ColorPicker";
@@ -13,10 +14,12 @@ export interface Size {
 }
 
 const Canvas: React.FC = () => {
+  const canvasRef = useRef<HTMLDivElement>(null);
   const [canvasSize, setCanvasSize] = useState<Size>({ length: 16, width: 16 });
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const [grid, setGrid] = useState<boolean>(false);
   const [color, setColor] = useState<string>("#000");
+
   const createRow = (size: number, key: number): JSX.Element => {
     const row: Array<JSX.Element> = [];
     for (let i = 0; i < size; i++) {
@@ -36,12 +39,16 @@ const Canvas: React.FC = () => {
     );
   };
 
-  const createCanvas = ({ length, width }: Size): Array<JSX.Element> => {
+  const createCanvas = ({ length, width }: Size): JSX.Element => {
     const canvas: Array<JSX.Element> = [];
     for (let i = 0; i < length; i++) {
       canvas.push(createRow(width, i));
     }
-    return canvas;
+    return (
+      <div className="canvas-image" ref={canvasRef}>
+        {canvas}
+      </div>
+    );
   };
 
   const toggleGrid = (
@@ -79,7 +86,18 @@ const Canvas: React.FC = () => {
           onMouseLeave={() => setIsDrawing(false)}
         >
           <div className="button-pane">
-            <div className="buttons">{toggleGrid}</div>
+            <div className="buttons">
+              {toggleGrid}
+
+              <button
+                className="btn"
+                onClick={() =>
+                  exportComponentAsPNG(canvasRef, { fileName: "paint" })
+                }
+              >
+                Export
+              </button>
+            </div>
             {questionMark}
           </div>
           {createCanvas(canvasSize)}
