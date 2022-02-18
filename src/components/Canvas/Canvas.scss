@@ -23,6 +23,8 @@
 
 .buttons{
     flex-grow: 1;
+    display: flex;
+    align-items: center;
 }
 
 .question-mark{
@@ -30,6 +32,8 @@
     display: flex;
     align-items: center;
 }
+
+
 
 .canvas-container{
     display: flex;

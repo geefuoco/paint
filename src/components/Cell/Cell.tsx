@@ -18,25 +18,28 @@ const Cell: React.FC<Props> = ({ color, grid, isDrawing }) => {
   };
 
   const preventEvent = (ev: Event) => ev.preventDefault();
-  const paint = () => changeColor(color);
-  const erase = () => changeColor(canvasColor);
   const mouseDown = (ev: MouseEvent) => {
-    if (ev.buttons !== 2) {
+    if (ev.button === 0) {
       paint();
-    } else if (ev.buttons === 2) {
+    } else if (ev.button === 2) {
       erase();
     }
   };
 
   const mouseOver = (ev: MouseEvent) => {
     if (isDrawing) {
-      if (ev.buttons !== 2) {
+      if (ev.buttons === 4) return;
+      if (ev.button === 0) {
         paint();
-      } else if (ev.buttons === 2) {
+      }
+      if (ev.buttons === 2) {
         erase();
       }
     }
   };
+
+  const paint = () => changeColor(color);
+  const erase = () => changeColor(canvasColor);
 
   useEffect(() => {
     const { current } = cell;
