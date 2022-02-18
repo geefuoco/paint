@@ -1,18 +1,10 @@
-import React, {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { Size } from "../Canvas/Canvas";
 import "./Slider.scss";
 
 interface Props {
   setSize: Dispatch<SetStateAction<Size>>;
 }
-
-//Slider to change the gride size. Max grid size should be 100px?;
 
 const Slider: React.FC<Props> = ({ setSize }) => {
   const [multiple, setMultiple] = useState<string>("2");
