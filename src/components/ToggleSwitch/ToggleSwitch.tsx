@@ -26,7 +26,12 @@ const ToggleSwitch: React.FC<Props> = ({
         bottom,
       }}
     >
-      <input type="checkbox" id="toggle" className="check" />
+      <input
+        type="checkbox"
+        id="toggle"
+        className="check"
+        data-testid="toggle-switch"
+      />
       <label
         htmlFor="toggle"
         className="toggle-label"

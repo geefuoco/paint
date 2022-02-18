@@ -32,6 +32,7 @@ const Slider: React.FC<Props> = ({ setSize }) => {
       </label>
       <br />
       <input
+        data-testid="slider"
         type="range"
         id="size-slider"
         min="1"

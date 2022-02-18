@@ -7,6 +7,6 @@ describe("Canvas", () => {
 
   it("should render a section element", () => {
     setup();
-    expect(screen.getByRole("canvas-element")).toBeTruthy();
+    expect(screen.getByTestId("canvas-element")).toBeTruthy();
   });
 });

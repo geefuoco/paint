@@ -10,7 +10,11 @@ const App: React.FC = () => {
     color: "#1d1d1d",
   };
   return (
-    <div className="App" style={darkMode ? undefined : lightMode}>
+    <div
+      className="App"
+      data-testid="app"
+      style={darkMode ? undefined : lightMode}
+    >
       <ToggleSwitch
         top={25}
         left={200}

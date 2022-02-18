@@ -62,7 +62,14 @@ const Cell: React.FC<Props> = ({ color, grid, isDrawing }) => {
     // border: "dashed 1px grey",
   };
 
-  return <div ref={cell} className="cell" style={grid ? style : {}}></div>;
+  return (
+    <div
+      ref={cell}
+      data-testid="cell"
+      className="cell"
+      style={grid ? style : {}}
+    ></div>
+  );
 };
 
 export default Cell;
