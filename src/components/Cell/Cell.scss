@@ -1,8 +1,9 @@
 .cell{
     padding: 1rem;
     background-color: #fff;
-    width: 30px;
-    height: 30px;
+    width:100%;
+    max-width: 30px;
+    max-height: 30px;
     cursor:crosshair;
 }
 

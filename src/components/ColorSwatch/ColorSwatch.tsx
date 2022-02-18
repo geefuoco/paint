@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./ColorSwatch.scss";
 import { Props } from "../ColorPicker/ColorPicker";
 
@@ -16,9 +16,11 @@ const ColorSwatch: React.FC<ColorSwatchProps> = ({ setColor, colorState }) => {
     }
   };
 
-  useEffect(() => {
-    addNewColorSwatch(colorState);
-  }, [colorState]);
+  const addColor = (
+    <button className="add-color" onClick={() => addNewColorSwatch(colorState)}>
+      Add Color
+    </button>
+  );
 
   const previousColors = colorSwatches.map((color) => {
     return (
@@ -34,8 +36,9 @@ const ColorSwatch: React.FC<ColorSwatchProps> = ({ setColor, colorState }) => {
   return (
     <>
       <label className="swatches-title" htmlFor="color-swatches">
-        Recent Colors
+        Saved Colors
       </label>
+      {addColor}
       <div className="color-swatches" data-testid="color-swatches">
         {previousColors}
       </div>

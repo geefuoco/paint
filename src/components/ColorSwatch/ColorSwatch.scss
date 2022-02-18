@@ -13,3 +13,12 @@
 .swatches-title{
     padding:0 1rem;
 }
+
+.add-color{
+    padding: .2rem;
+    margin: 1rem 0 0 1rem;
+    box-shadow: 0 0 5px lightgrey;
+    &:active{
+        background-color: #bbb;
+    }
+}
