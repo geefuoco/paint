@@ -52,10 +52,11 @@ const Cell: React.FC<Props> = ({ color, grid, isDrawing }) => {
         current.removeEventListener("mouseenter", mouseOver);
       };
     }
-  }, [cell, isDrawing]);
+  }, [cell, isDrawing, color]);
 
   const style = {
-    border: "dashed 1px grey",
+    boxShadow: "inset 0 0 4px grey",
+    // border: "dashed 1px grey",
   };
 
   return <div ref={cell} className="cell" style={grid ? style : {}}></div>;
