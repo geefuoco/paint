@@ -35,7 +35,7 @@ const Slider: React.FC<Props> = ({ setSize }) => {
         type="range"
         id="size-slider"
         min="1"
-        max="7"
+        max="5"
         step="1"
         value={multiple}
         onChange={handleChange}
