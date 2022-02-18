@@ -6,6 +6,7 @@ import ReactTooltip from "react-tooltip";
 
 import "./Canvas.scss";
 import ColorPicker from "../ColorPicker/ColorPicker";
+import ColorSwatch from "../ColorSwatch/ColorSwatch";
 
 export interface Size {
   length: number;
@@ -16,7 +17,7 @@ const Canvas: React.FC = () => {
   const [canvasSize, setCanvasSize] = useState<Size>({ length: 16, width: 16 });
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const [grid, setGrid] = useState<boolean>(false);
-  const [color, setColor] = useState<string>("#000");
+  const [color, setColor] = useState<string>("#000000");
   const createRow = (size: number, key: number): JSX.Element => {
     const row: Array<JSX.Element> = [];
     for (let i = 0; i < size; i++) {
@@ -68,7 +69,8 @@ const Canvas: React.FC = () => {
     <div className="canvas-container">
       <aside className="tools">
         <Slider setSize={setCanvasSize} />
-        <ColorPicker setColor={setColor} />
+        <ColorPicker setColor={setColor} colorState={color} />
+        <ColorSwatch setColor={setColor} colorState={color} />
       </aside>
       <div className="canvas-holder">
         <section
