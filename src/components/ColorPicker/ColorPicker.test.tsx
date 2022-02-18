@@ -3,7 +3,8 @@ import { render, screen } from "@testing-library/react";
 import ColorPicker from "./ColorPicker";
 
 describe("ColorPicker", () => {
-  const setup = () => render(<ColorPicker setColor={jest.fn} />);
+  const setup = () =>
+    render(<ColorPicker setColor={jest.fn} colorState="black" />);
 
   it("should render a color picker", () => {
     setup();
